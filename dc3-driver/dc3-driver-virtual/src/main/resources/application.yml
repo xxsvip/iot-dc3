@@ -1,0 +1,46 @@
+driver:
+  name: VirtualDriver
+  description: @project.description@
+  schedule:
+    status:
+      enable: true
+      corn: '0/10 * * * * ?'
+    read:
+      enable: true
+      corn: '0/1 * * * * ?'
+    custom:
+      enable: true
+      corn: '0/5 * * * * ?'
+  driver-attribute:
+    - displayName: 主机
+      name: host
+      type: string
+      value: localhost
+      description: Ip
+    - displayName: 端口
+      name: port
+      type: int
+      value: 18600
+      description: Port
+  point-attribute:
+    - displayName: 位号
+      name: tag
+      type: string
+      value: TAG
+      description: 位号名称
+
+server:
+  port: 8600
+
+spring:
+  application:
+    name: @project.artifactId@
+
+logging:
+  level:
+    com.dc3: DEBUG
+    #com.dc3.common.sdk.service: INFO
+    #com.dc3.common.sdk.service.job: INFO
+    #com.dc3.common.sdk.service.rabbit: INFO
+  file:
+    name: dc3/logs/driver/virtual/${spring.application.name}.log
